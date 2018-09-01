@@ -1,8 +1,15 @@
+# Heroes of Pymoli
+![Earthquakes Map](images/earthquake.png)
+## Data Analysis on a fictitious video game using Pandas.
+#### *Project created as part of GWU Data Analytics course.*
+> Pandas, Python
 
-Heroes of Pymoli Data Analysis
-- People do not spend more than $20.00 in the game.
-- Most purchases are made by people from 18 to 25 years old.
-- Most popular items prices are below the average item price.
+
+## Data Insights
+* People do not spend more than $20.00 in the game.
+* Most purchases are made by people from 18 to 25 years old.
+* Most popular items prices are below the average item price.
+
 
 
 ```python
