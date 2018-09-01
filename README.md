@@ -67,6 +67,15 @@ Identify the 5 most profitable items by total purchase value, then list (in a ta
 
 ## Data Source
 A JSON file was provided with demographic and purchasing information about Heroes of Pymoli video game. 
+#### Number of Records
+779
+#### Columns
+* Age
+* Gender
+* Item ID
+* Item Name
+* Item Price
+* SN (Screen Name)
 
 ## Coding
 
@@ -85,7 +94,7 @@ heroes_df = pd.read_json(json_path, orient='records')
 heroes_df.head()
 ```
 <div>
-    <p><b>DataFrame First 5 Rows</b></p>
+<p><b>Original DataFrame (First 5 Rows)</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -150,10 +159,10 @@ heroes_df.head()
 
 
 ### Total Players Dataframe
-
-To obtain the total number of player
-Pandas and Numpy libraries are imported and a dataframe named **_heroes_df_** is created with data contained in the JSON file. 
-
+To obtain the total number of players, a dataframe named **_tot_plyr_df_** is created by following below steps:
+1. Filter **_heroes_df_** dataframe requesting the number of unique values present in **SN** column.
+2. The number of unique values is stored in a dictionary.
+3. Dataframe **_tot_plyr_df_** is created from the dictionary.
 
 ```python
 #Total Players
@@ -162,10 +171,6 @@ tot_players_dict={"Total Players":[total_players]}
 tot_plyr_df = pd.DataFrame.from_dict(tot_players_dict, orient='columns')
 tot_plyr_df
 ```
-
-
-
-
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -183,30 +188,45 @@ tot_plyr_df
 </table>
 </div>
 
-
-
-
+### Purchasing Analysis (Total) Dataframe
+To obtain the purchasing analysis information, the first step is to calculate all the elements required using **_heroes_df_** dataframe as source table:
+* **Number of Unique Items**:
+Calculated as the number of unique values in the **Item ID** column from **_heroes_df_** dataframe.
 ```python
-#Purchase Analysis
-#Number of Unique Items
-nbr_unique_items = heroes_df["Item ID"].nunique()
-#Average Purchase Price
+#Purchasing Analysis (Total)
+##Number of Unique Items
+nbr_unique_items = heroes_df["Item ID"].nunique() 
+```
+* **Average Purchase Price**:
+Calculated as the mean of all values in **Price** column from **_heroes_df_** dataframe.
+```python
+##Average Purchase Price
 avg_purch_price = heroes_df["Price"].mean()
-#Total Number of Purchases
+```
+* **Total Number of Purchases**:
+Calculated as the total number of records in **_heroes_df_** dataframe.
+```python
+##Total Number of Purchases
 total_nbr_purch = len(heroes_df.index)
-#Total Revenue
+```
+* **Total Revenue**:
+Calculated as the sum of all values in **Price** column from **_heroes_df_** dataframe.
+```python
+##Total Revenue
 total_revenue = heroes_df["Price"].sum()
-
+```
+Once all the calculations are stored in their respective variables, a dataframe named **_purch_tot_df_** is created from a dictionary that includes all the variables with their respective column name.
+```python
 purch_tot_df = pd.DataFrame.from_dict({"Number of unique items":[nbr_unique_items],"Average Price":[avg_purch_price],"Number of Purchases":[total_nbr_purch],"Total Revenue":[total_revenue]}, orient='columns')
+```
+Finally, currency format is applied for **Total Revenue** and **Average Price** values and dataframe is displayed.
+```python
 purch_tot_df["Total Revenue"] = purch_tot_df["Total Revenue"].map("$ {:,.2f}".format)
 purch_tot_df["Average Price"] = purch_tot_df["Average Price"].map("$ {:,.2f}".format)
 purch_tot_df
 ```
-
-
-
-
 <div>
+<p><b> Purchasing Analysis (Total) </b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -228,7 +248,6 @@ purch_tot_df
   </tbody>
 </table>
 </div>
-
 
 
 
