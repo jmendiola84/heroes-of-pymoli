@@ -1,46 +1,32 @@
 # Heroes of Pymoli
-![Earthquakes Map](images/earthquake.png)
+![Fantasy Game Image](https://orig00.deviantart.net/2c7f/f/2010/096/d/8/d8ed073d1fe8ecb44aa436e46daed3df.jpg)
 ## Data Analysis on a fictitious video game using Pandas.
 #### *Project created as part of GWU Data Analytics course.*
 > Pandas, Python
 
+## Objective
 
-## Data Insights
-* People do not spend more than $20.00 in the game.
-* Most purchases are made by people from 18 to 25 years old.
-* Most popular items prices are below the average item price.
+## Data Source
+*TBD - Information about data source*
 
+## Coding
 
+### Import Libraries and Data Source Reading
+
+Pandas and Numpy libraries are imported and a dataframe named **_heroes_df_** is created with data contained in the JSON file. 
 
 ```python
 import pandas as pd
 import numpy as np
 ```
 
-
 ```python
 json_path = ('purchase_data.json')
 heroes_df = pd.read_json(json_path, orient='records')
 heroes_df.head()
 ```
-
-
-
-
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
+    <p style="color:red;"><b>DataFrame First 5 Rows</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -104,6 +90,9 @@ heroes_df.head()
 </div>
 
 
+### Total Players Dataframe
+
+Pandas and Numpy libraries are imported and a dataframe named **_heroes_df_** is created with data contained in the JSON file. 
 
 
 ```python
@@ -118,19 +107,6 @@ tot_plyr_df
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -171,19 +147,6 @@ purch_tot_df
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -225,19 +188,6 @@ gender_df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -294,19 +244,6 @@ gen_purch_df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -372,19 +309,6 @@ age_demo_df
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -503,19 +427,6 @@ top_spnd_df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -594,19 +505,6 @@ popitems_df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -691,19 +589,6 @@ profit_df.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -762,3 +647,7 @@ profit_df.head()
 </div>
 
 
+## Data Insights
+* People do not spend more than $20.00 in the game.
+* Most purchases are made by people from 18 to 25 years old.
+* Most popular items prices are below the average item price.
