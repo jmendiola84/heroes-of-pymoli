@@ -81,7 +81,7 @@ A JSON file was provided with demographic and purchasing information about Heroe
 
 ### Import Libraries and Data Source Reading
 
-Pandas and Numpy libraries are imported and a dataframe named **_heroes_df_** is created with data contained in the JSON file. 
+Pandas and Numpy libraries are imported and a dataframe named **_heroes_df_** is created retrieving the data from the JSON file. 
 
 ```python
 import pandas as pd
