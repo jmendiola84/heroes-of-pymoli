@@ -1,13 +1,72 @@
 # Heroes of Pymoli
-![Fantasy Game Image](https://orig00.deviantart.net/2c7f/f/2010/096/d/8/d8ed073d1fe8ecb44aa436e46daed3df.jpg)
-## Data Analysis on a fictitious video game using Pandas.
+![Fantasy Game Image](https://orig00.deviantart.net/2c7f/f/2010/096/d/8/d8ed073d1fe8ecb44aa436e46daed3df.jpg "Credits: deviantart/velinov")
+## Data Analysis on a fantasy video game using Pandas.
 #### *Project created as part of GWU Data Analytics course.*
 > Pandas, Python
 
 ## Objective
 
+The objective of this project is to emulate the tasks of a Lead Analyst on an independent gaming company. 
+
+The data provided contains demographic and purchasing information about the fictional game **Heroes of Pymoli**. Like many others in its genre, the game is free-to-play, but players are encouraged to purchase optional items that enhance their playing experience. 
+
+A Data Analytics report has to be created to break down the game's purchasing data into meaningful insights.
+
+Final report should include each of the following:
+
+#### Player Count
+* Total Number of Players
+
+#### Purchasing Analysis (Total)
+* Number of Unique Items
+* Average Purchase Price
+* Total Number of Purchases
+* Total Revenue
+
+#### Gender Demographics
+* Percentage and Count of Male Players
+* Percentage and Count of Female Players
+* Percentage and Count of Other / Non-Disclosed
+
+#### Purchasing Analysis (Gender) 
+The below each broken by gender
+* Purchase Count
+* Average Purchase Price
+* Total Purchase Value
+* Normalized Totals
+
+#### Age Demographics
+The below each broken into bins of 4 years (i.e. <10, 10-14, 15-19, etc.) 
+* Purchase Count
+* Average Purchase Price
+* Total Purchase Value
+* Normalized Totals
+
+#### Top Spenders
+Identify the the top 5 spenders in the game by total purchase value, then list (in a table):
+* SN
+* Purchase Count
+* Average Purchase Price
+* Total Purchase Value
+
+#### Most Popular Items
+Identify the 5 most popular items by purchase count, then list (in a table):
+* Item ID
+* Item Name
+* Purchase Count
+* Item Price
+* Total Purchase Value
+
+#### Most Profitable Items
+Identify the 5 most profitable items by total purchase value, then list (in a table):
+* Item ID
+* Item Name
+* Purchase Count
+* Item Price
+* Total Purchase Value
+
 ## Data Source
-*TBD - Information about data source*
+A JSON file was provided with demographic and purchasing information about Heroes of Pymoli video game. 
 
 ## Coding
 
@@ -26,7 +85,7 @@ heroes_df = pd.read_json(json_path, orient='records')
 heroes_df.head()
 ```
 <div>
-    <p style="color:red;"><b>DataFrame First 5 Rows</b></p>
+    <p><b>DataFrame First 5 Rows</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -92,6 +151,7 @@ heroes_df.head()
 
 ### Total Players Dataframe
 
+To obtain the total number of player
 Pandas and Numpy libraries are imported and a dataframe named **_heroes_df_** is created with data contained in the JSON file. 
 
 
