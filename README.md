@@ -35,7 +35,7 @@ The below each broken by gender
 * Total Purchase Value
 * Normalized Totals
 
-#### Age Demographics
+#### Purchasing Analysis (Age)
 The below each broken into bins of 4 years (i.e. <10, 10-14, 15-19, etc.) 
 * Purchase Count
 * Average Purchase Price
@@ -249,24 +249,24 @@ purch_tot_df
 </table>
 </div>
 
-
+### Gender Demographics Dataframe
+To obtain the demographics information classified by gender, first a dataframe is created filtering **_heroes_df_** dataframe by dropping duplicates from **SN** column, and then grouping the remaining records by **Gender** column:
 
 ```python
 #Gender Demographics
-#Percentage and Count of Male Players
+##Percentage and Count of Players by Gender
 heroes_gender_df = pd.DataFrame(heroes_df.drop_duplicates(["SN"]))
 gender_demo_grp = heroes_gender_df.groupby(['Gender'])
-#gender_demo_df[""].mean()
+```
+Once the records have been grouped by gender, next step is to create **_gender_df_** dataframe calculating the **Percentage** and **Count** for each gender, and apply percent format to **Percentage** column.
+
+```python
 gender_df = pd.DataFrame({"Total Count":gender_demo_grp["Gender"].count(),"Percentage of players":gender_demo_grp["Gender"].count()/total_players*100})
 gender_df["Percentage of players"] = gender_df["Percentage of players"].map("{:.2f}%".format)
-#gender_df = gender_df.set_index('Gender')
 gender_df.head()
 ```
-
-
-
-
 <div>
+<p><b> Players Percentage and Count by Gender </b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -300,29 +300,33 @@ gender_df.head()
 </table>
 </div>
 
-
-
+### Purchasing Analysis by Gender Dataframe
+To obtain the purchasing information classified by gender, first a dataframe is created grouping the records from **_heroes_df_** dataframe by **Gender** column:
 
 ```python
 #Purchasing Analysis (Gender)
-#The below each broken by gender
-#Purchase Count
-#Average Purchase Price
-#Total Purchase Value
-#Normalized Totals
+##The below each broken by gender:
+###Purchase Count
+###Average Purchase Price
+###Total Purchase Value
+###Normalized Totals
 purch_df = pd.DataFrame(heroes_df)
 gender_purch = purch_df.groupby(['Gender'])
+```
+Then, a new dataframe named **_gen_purch_df_** is populated with the required columns calculated and formatted as expected:
+* Purchase Count
+* Average Purchase Price
+* Total Purchase Value
+* Normalized Totals
+```python
 gen_purch_df = pd.DataFrame({"Purchase Count":gender_purch["Price"].count(), "Average Purchase Price":gender_purch["Price"].mean(),"Total Purchase Value":gender_purch["Price"].sum(), "Normalized Totals":gender_purch["Price"].sum()/gender_df["Total Count"]})
 gen_purch_df["Average Purchase Price"] = gen_purch_df["Average Purchase Price"].map("${:.2f}".format)
 gen_purch_df["Total Purchase Value"] = gen_purch_df["Total Purchase Value"].map("${:,.2f}".format)
 gen_purch_df["Normalized Totals"] = gen_purch_df["Normalized Totals"].map("${:,.2f}".format)
 gen_purch_df.head()
 ```
-
-
-
-
 <div>
+ <p><b>Purchasing Analysis by Genre</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -366,28 +370,40 @@ gen_purch_df.head()
 </table>
 </div>
 
-
-
+### Purchasing Analysis by Age Dataframe
+For the Purchasing Analysis by Age Dataframe is required to create bins to group all the players by their specific age range. According to criteria applied, the players were divided in the following age range bins:
+* Less than 10
+* 10-13
+* 14-17
+* 18-21
+* 22-25
+* 26-29
+* 30-33
+* 34-37
+* 38-40
+* Greater than 40
 
 ```python
 age_df = pd.DataFrame(heroes_df)
 group_names = ['<10', '10-13', '14-17', '18-21', '22-25', '26-29', '30-33', '34-37', '38-40', '>40']
 bins = [0, 9, 13, 17, 21, 25, 29, 33, 37, 40, 80]
-
 age_demo_grp = age_df.groupby(pd.cut(age_df["Age"], bins, labels=group_names))
+```
+Next step is to create **_age_demo_df_** dataframe and include required columns with their respective calculation and formatting:
+* Purchase Count
+* Average Purchase Price
+* Total Purchase Value
+* Normalized Totals
 
-# Create the names for the four bins
+```python
 age_demo_df = pd.DataFrame({"Purchase Count":age_demo_grp["Price"].count(), "Average Purchase Price":age_demo_grp["Price"].mean(),"Total Purchase Value":age_demo_grp["Price"].sum(),"Normalized Totals":age_demo_grp["Price"].sum()/age_demo_grp["SN"].nunique()})
 age_demo_df["Average Purchase Price"] = age_demo_df["Average Purchase Price"].map("${:.2f}".format)
 age_demo_df["Total Purchase Value"] = age_demo_df["Total Purchase Value"].map("${:,.2f}".format)
 age_demo_df["Normalized Totals"] = age_demo_df["Normalized Totals"].map("${:,.2f}".format)
 age_demo_df
 ```
-
-
-
-
 <div>
+ <p><b>Purchasing Analysis by Age</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -481,31 +497,27 @@ age_demo_df
 </div>
 
 
-
+### Top Spenders Dataframe
+To identify the Top Spenders of the game, **_heroes_df_** dataframe is grouped by **SN** column:
 
 ```python
 #Top Spenders
-
-#Identify the the top 5 spenders in the game by total purchase value, then list (in a table):
-#SN
-#Purchase Count
-#Average Purchase Price
-#Total Purchase Value
-
-
 spenders_df = pd.DataFrame(heroes_df)
 top_spnd_grp = spenders_df.groupby(['SN'])
+```
+Then, new columns are created and formatted for the following calculations:
+* Purchase Count
+* Average Purchase Price
+* Total Purchase Value
+```python
 top_spnd_df = pd.DataFrame({"Purchase Count":top_spnd_grp["Price"].count(), "Average Purchase Price":top_spnd_grp["Price"].mean(),"Total Purchase Value":top_spnd_grp["Price"].sum()})
 top_spnd_df = top_spnd_df.sort_values("Total Purchase Value", ascending=False)
 top_spnd_df["Average Purchase Price"] = top_spnd_df["Average Purchase Price"].map("${:.2f}".format)
 top_spnd_df["Total Purchase Value"] = top_spnd_df["Total Purchase Value"].map("${:,.2f}".format)
 top_spnd_df.head()
 ```
-
-
-
-
 <div>
+<p><b>Top 5 Spenders</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -557,33 +569,28 @@ top_spnd_df.head()
 </div>
 
 
+### Most Popular Items DataFrame
+To obtain the most popular items is required to group the records from **_heroes_df_** dataframe by **Item ID**, **Item Name** columns, create **_popitems_df_** dataframe including all required columns (with their proper calculation and formatting), and sort dataframe by **Purchase Count** column.
 
+For this dataframe, following columns are required:
+* Item ID
+* Item Name
+* Purchase Count
+* Item Price
+* Total Purchase Value
 
 ```python
 #Most Popular Items
-
-#Identify the 5 most popular items by purchase count, then list (in a table):
-#Item ID
-#Item Name
-#Purchase Count
-#Item Price
-#Total Purchase Value
-
-
 popit_df = pd.DataFrame(heroes_df)
 popitems_grp = popit_df.groupby(['Item ID','Item Name'])
 popitems_df = pd.DataFrame({"Purchase Count":popitems_grp["Price"].count(), "Item Price":popitems_grp["Price"].mean(),"Total Purchase Value":popitems_grp["Price"].sum()})
 popitems_df = popitems_df.sort_values("Purchase Count", ascending=False)
 popitems_df["Item Price"] = popitems_df["Item Price"].map("${:.2f}".format)
 popitems_df["Total Purchase Value"] = popitems_df["Total Purchase Value"].map("${:,.2f}".format)
-
 popitems_df.head()
 ```
-
-
-
-
 <div>
+<p><b>Most Popular Items</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -642,32 +649,30 @@ popitems_df.head()
 </div>
 
 
+### Most Profitable Items DataFrame
+To obtain the most popular items is required to group the records from **_heroes_df_** dataframe by **Item ID**, **Item Name** columns, create **_popitems_df_** dataframe including all required columns (with their proper calculation and formatting), and sort dataframe by **Total Purchase Value** column.
+
+For this dataframe, following columns are required:
+* Item ID
+* Item Name
+* Purchase Count
+* Item Price
+* Total Purchase Value
 
 
 ```python
 #Most Profitable Items
-
-#Identify the 5 most profitable items by total purchase value, then list (in a table):
-#Item ID
-#Item Name
-#Purchase Count
-#Item Price
-#Total Purchase Value
-
 profit_df = pd.DataFrame(heroes_df)
 profit_grp = profit_df.groupby(['Item ID','Item Name'])
 profit_df = pd.DataFrame({"Purchase Count":profit_grp["Price"].count(), "Item Price":profit_grp["Price"].mean(),"Total Purchase Value":profit_grp["Price"].sum()})
 profit_df = profit_df.sort_values("Total Purchase Value", ascending=False)
 profit_df["Item Price"] = profit_df["Item Price"].map("${:.2f}".format)
 profit_df["Total Purchase Value"] = profit_df["Total Purchase Value"].map("${:,.2f}".format)
-
 profit_df.head()
 ```
 
-
-
-
 <div>
+<p><b>Most Profitable Items</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -726,7 +731,14 @@ profit_df.head()
 </div>
 
 
-## Data Insights
+## Data Analysis
+_*Here goes the introduction of Data Analysis*_
+
+The following report was generated in Tableau including the main information about 
+
+<div class='tableauPlaceholder' id='viz1536014118009' style='position: relative'><noscript><a href='#'><img alt='Purchase Analysis Report ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pu&#47;PurchaseAnalysisReport-FictionalMobileRPGGame&#47;PurchaseAnalysisReport&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='PurchaseAnalysisReport-FictionalMobileRPGGame&#47;PurchaseAnalysisReport' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pu&#47;PurchaseAnalysisReport-FictionalMobileRPGGame&#47;PurchaseAnalysisReport&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>
+
+### Insights
 * People do not spend more than $20.00 in the game.
 * Most purchases are made by people from 18 to 25 years old.
 * Most popular items prices are below the average item price.
