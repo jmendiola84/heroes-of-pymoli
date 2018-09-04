@@ -683,17 +683,15 @@ profit_df.head()
 
 
 ## Data Analysis
-Once all the information is collected and organized in dataframes, a data analysis is conducted to identify trends and patterns present in the provided data. Based in the key metrics     
-The following report was generated in Tableau including the main information: 
+Once all the information is collected and organized in dataframes, a data analysis is conducted to identify trends and patterns present in the provided data. The following report was generated in Tableau based in the key metrics calculated during the dataframes creation: 
 
 ![Tableau](HoP-TableauReport.png "Tableau Report")
 
 
-Complete interactive Tableau report can be found here: 
-https://public.tableau.com/views/PurchaseAnalysisReport-FictionalMobileRPGGame/PurchaseAnalysisReport?:embed=y&:display_count=yes&publish=yes
+Complete interactive Tableau report can be found [here.]( 
+https://public.tableau.com/views/PurchaseAnalysisReport-FictionalMobileRPGGame/PurchaseAnalysisReport?:embed=y&:display_count=yes&publish=yes)
 
-### Insights
-* People do not spend more than $20.00 in the game.
+### Data Findings
+* No one have spent more than $20.00 in the game. 
 * Most purchases are made by men from 18 to 25 years old.
 * Most popular items prices are below the average item price.
-
