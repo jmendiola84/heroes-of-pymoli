@@ -2,7 +2,7 @@
 ![Fantasy Game Image](https://orig00.deviantart.net/2c7f/f/2010/096/d/8/d8ed073d1fe8ecb44aa436e46daed3df.jpg "Credits: deviantart/velinov")
 ## Data Analysis on a fantasy video game using Pandas.
 #### *Project created as part of GWU Data Analytics course.*
-> Pandas, Python
+> Pandas, Python, Tableau
 
 ## Objective
 
