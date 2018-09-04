@@ -95,10 +95,9 @@ heroes_df.head()
 ```
 <div>
 <p><b>Original DataFrame (First 5 Rows)</b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
       <th>Age</th>
       <th>Gender</th>
       <th>Item ID</th>
@@ -109,7 +108,6 @@ heroes_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
       <td>38</td>
       <td>Male</td>
       <td>165</td>
@@ -118,7 +116,6 @@ heroes_df.head()
       <td>Aelalis34</td>
     </tr>
     <tr>
-      <th>1</th>
       <td>21</td>
       <td>Male</td>
       <td>119</td>
@@ -127,7 +124,6 @@ heroes_df.head()
       <td>Eolo46</td>
     </tr>
     <tr>
-      <th>2</th>
       <td>34</td>
       <td>Male</td>
       <td>174</td>
@@ -136,7 +132,6 @@ heroes_df.head()
       <td>Assastnya25</td>
     </tr>
     <tr>
-      <th>3</th>
       <td>21</td>
       <td>Male</td>
       <td>92</td>
@@ -145,7 +140,6 @@ heroes_df.head()
       <td>Pheusrical25</td>
     </tr>
     <tr>
-      <th>4</th>
       <td>23</td>
       <td>Male</td>
       <td>63</td>
@@ -172,16 +166,14 @@ tot_plyr_df = pd.DataFrame.from_dict(tot_players_dict, orient='columns')
 tot_plyr_df
 ```
 <div>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
       <th>Total Players</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
       <td>573</td>
     </tr>
   </tbody>
@@ -227,10 +219,9 @@ purch_tot_df
 ```
 <div>
 <p><b> Purchasing Analysis (Total) </b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
       <th>Average Price</th>
       <th>Number of Purchases</th>
       <th>Number of unique items</th>
@@ -239,7 +230,6 @@ purch_tot_df
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
       <td>$ 2.93</td>
       <td>780</td>
       <td>183</td>
@@ -267,17 +257,12 @@ gender_df.head()
 ```
 <div>
 <p><b> Players Percentage and Count by Gender </b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+     <th>Gender</th>
       <th>Percentage of players</th>
       <th>Total Count</th>
-    </tr>
-    <tr>
-      <th>Gender</th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -327,21 +312,14 @@ gen_purch_df.head()
 ```
 <div>
  <p><b>Purchasing Analysis by Genre</b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+      <th>Gender</th>
       <th>Average Purchase Price</th>
       <th>Normalized Totals</th>
       <th>Purchase Count</th>
       <th>Total Purchase Value</th>
-    </tr>
-    <tr>
-      <th>Gender</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -404,21 +382,14 @@ age_demo_df
 ```
 <div>
  <p><b>Purchasing Analysis by Age</b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+      <th>Age</th>
       <th>Average Purchase Price</th>
       <th>Normalized Totals</th>
       <th>Purchase Count</th>
       <th>Total Purchase Value</th>
-    </tr>
-    <tr>
-      <th>Age</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -518,19 +489,13 @@ top_spnd_df.head()
 ```
 <div>
 <p><b>Top 5 Spenders</b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+      <th>SN</th>
       <th>Average Purchase Price</th>
       <th>Purchase Count</th>
       <th>Total Purchase Value</th>
-    </tr>
-    <tr>
-      <th>SN</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -591,21 +556,14 @@ popitems_df.head()
 ```
 <div>
 <p><b>Most Popular Items</b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
-      <th></th>
+      <th>Item ID</th>
+      <th>Item Name</th>
       <th>Item Price</th>
       <th>Purchase Count</th>
       <th>Total Purchase Value</th>
-    </tr>
-    <tr>
-      <th>Item ID</th>
-      <th>Item Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -673,21 +631,14 @@ profit_df.head()
 
 <div>
 <p><b>Most Profitable Items</b></p>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
-      <th></th>
+      <th>Item ID</th>
+      <th>Item Name</th>
       <th>Item Price</th>
       <th>Purchase Count</th>
       <th>Total Purchase Value</th>
-    </tr>
-    <tr>
-      <th>Item ID</th>
-      <th>Item Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -732,15 +683,17 @@ profit_df.head()
 
 
 ## Data Analysis
-_*Here goes the introduction of Data Analysis*_
-
-The following report was generated in Tableau including the main information about 
+Once all the information is collected and organized in dataframes, a data analysis is conducted to identify trends and patterns present in the provided data. Based in the key metrics     
+The following report was generated in Tableau including the main information: 
 
 ![Tableau](HoP-TableauReport.png "Tableau Report")
 
 
+Complete interactive Tableau report can be found here: 
+https://public.tableau.com/views/PurchaseAnalysisReport-FictionalMobileRPGGame/PurchaseAnalysisReport?:embed=y&:display_count=yes&publish=yes
 
 ### Insights
 * People do not spend more than $20.00 in the game.
-* Most purchases are made by people from 18 to 25 years old.
+* Most purchases are made by men from 18 to 25 years old.
 * Most popular items prices are below the average item price.
+
